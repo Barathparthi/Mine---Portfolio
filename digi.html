@@ -1,0 +1,2173 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>SRIHER - Dashboard</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="icon" href="https://digicampus.sriramachandra.edu.in/css/publichome/assets/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="/css/signcss/jquery.signaturepad.css"/><link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css"/><link rel="stylesheet" href="/css/bootstrap-multiselect/multi-select.css"/><link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css"/><link rel="stylesheet" href="/css/../js/jquery-datatable/dataTables.bootstrap4.min.css"/><link rel="stylesheet" href="/css/../js/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css"/><link rel="stylesheet" href="/css/../js/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css"/><link rel="stylesheet" href="/css/../js/sweetalert/sweetalert.css"/><link rel="stylesheet" href="/css/../js/fullcalendar/fullcalendar.min.css"/><link rel="stylesheet" href="/css/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"/><link rel="stylesheet" href="/css/bootstrap-colorpicker/css/bootstrap-colorpicker.css"/><link rel="stylesheet" href="/css/bootstrap-timepicker/css/bootstrap-timepicker.css"/><link rel="stylesheet" href="/css/main.css"/><link rel="stylesheet" href="/css/style.css"/><link rel="stylesheet" href="/css/color_skins.css"/><link rel="stylesheet" href="/css/dropify/css/dropify.min.css"/><link rel="stylesheet" href="/css/jquery.timepicker.css"/><script src="/js/libscripts.bundle.js"></script><script src="/js/vendorscripts.bundle.js"></script><script src="/js/datatablescripts.bundle.js"></script><script src="/js/bootstrap-multiselect/bootstrap-multiselect.js"></script><script src="/js/bootstrap-multiselect/jquery.multi-select.js"></script><script src="/js/pages/forms/advanced-form-elements.js"></script><script src="/js/parsleyjs/js/parsley.min.js"></script><script src="/js/jquery-validation/jquery.validate.js"></script><script src="/js/jquery-datatable/buttons/dataTables.buttons.min.js"></script><script src="/js/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script><script src="/js/jquery-datatable/buttons/buttons.colVis.min.js"></script><script src="/js/jquery-datatable/buttons/buttons.html5.min.js"></script><script src="/js/jquery-datatable/buttons/buttons.print.min.js"></script><script src="/js/fullcalendarscripts.bundle.js"></script><script src="/js/fullcalendar/fullcalendar.js"></script><script src="/js/jquery-inputmask/jquery.inputmask.bundle.js"></script><script src="/js/jquery.maskedinput/jquery.maskedinput.min.js"></script><script src="/js/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script><script src="/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script><script src="/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script><script src="/js/sweetalert/sweetalert.min.js"></script><script src="/js/popups.js"></script><script src="/js/pages/calendar.js"></script><script src="/js/mainscripts.bundle.js"></script><script src="/js/pages/tables/jquery-datatable.js"></script><script src="/js/index.js"></script><script src="/js/dropify/js/dropify.min.js"></script><script src="/js/pages/forms/dropify.js"></script><script src="/js/jquery.timepicker.js"></script><script src="/js/form-components.js"></script><script src="/js/easypiechart.bundle.js"></script><script src="/js/chartist.bundle.js"></script><script src="/js/excelexport.js"></script><script src="/js/signjs/numeric-1.2.6.min.js"></script><script src="/js/signjs/bezier.js"></script><script src="/js/signjs/jquery.signaturepad.js"></script><script src="/js/signjs/html2canvas.js"></script><script src="/js/signjs/json2.min.js"></script><script src="/js/date.format.js"></script><script src="/js/dist/standalone/selectize.js"></script><link rel="stylesheet" href="/css/dist/selectize.default.css"/><link rel="stylesheet" href="/css/styletimetable.css"/><script src="/js/mtaudiojs/jquery.rowspanizer.js"></script><script src="/js/mtaudiojs/jquery.rowspanizer.min.js"></script><script src="/js/mtaudiojs/ConcatenateBlobs.js"></script><script src="/js/mtaudiojs/wav-merger.js"></script><script src="/js/html2pdf.bundle.min.js"></script><script src="/js/mtaudiojs/dataTables.rowsGroup.js"></script>	<style>
+		.pcare {
+			max-width: 100%;
+			width: 150px;
+			position: absolute;
+			right: 160px;
+			top: 15px;
+		}
+
+		.custom_clock {
+			background-color: #01004c;
+			color: #fff;
+			/* position: absolute; */
+			/* padding: 10px 20px; */
+			font-size: 14px;
+			font-weight: bold;
+			border-radius: 5px;
+			/* left: 50%; */
+			/* transform: translateX(-50%); */
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			text-align: center;
+			vertical-align: middle;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
+		}
+	</style>
+	<script>
+		/*var activeurl = window.location;
+			var spl = activeurl.toString().split('/',5);
+			var url = "/"+spl[3]+"/"+spl[4];
+			console.log(url);
+			$('a[href="'+url+'"]').parent('li').addClass('active');*/
+
+
+		$(function() {
+			var $wrapper = $('#wrapper');
+
+			// theme switcher
+			var theme_match = String(window.location).match(/[?&]theme=([a-z0-9]+)/);
+			var theme = (theme_match && theme_match[1]) || 'default';
+			var themes = ['default', 'legacy', 'bootstrap2', 'bootstrap3'];
+			$('head').append('<link rel="stylesheet" href="?php echo $this->Url->build(' / ', true); //webroot/ ?>css/dist/selectize.' + theme + '.css">');
+
+			var $themes = $('<div>').addClass('theme-selector').insertAfter('h1');
+			for (var i = 0; i < themes.length; i++) {
+				$themes.append('<a href="?theme=' + themes[i] + '"' + (themes[i] === theme ? ' class="active"' : '') + '>' + themes[i] + '</a>');
+			}
+
+			// display scripts on the page
+			$('script', $wrapper).each(function() {
+				var code = this.text;
+				if (code && code.length) {
+					var lines = code.split('\n');
+					var indent = null;
+
+					for (var i = 0; i < lines.length; i++) {
+						if (/^[	 ]*$/.test(lines[i])) continue;
+						if (!indent) {
+							var lineindent = lines[i].match(/^([ 	]+)/);
+							if (!lineindent) break;
+							indent = lineindent[1];
+						}
+						lines[i] = lines[i].replace(new RegExp('^' + indent), '');
+					}
+
+					var code = $.trim(lines.join('\n')).replace(/	/g, '    ');
+					var $pre = $('<pre>').addClass('js').text(code);
+					$pre.insertAfter(this);
+				}
+			});
+
+			// show current input values
+			$('select.selectized,input.selectized', $wrapper).each(function() {
+				var $container = $('<div>').addClass('value').html('Current Value: ');
+				var $value = $('<span>').appendTo($container);
+				var $input = $(this);
+				var update = function(e) {
+					$value.text(JSON.stringify($input.val()));
+				}
+
+				$(this).on('change', update);
+				update();
+
+				$container.insertAfter($input);
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		function iastartdt_chg(obj) {
+			document.getElementById('ia_end_dt').value = obj;
+		}
+	</script>
+	<script>
+		$(document).ready(function() {
+			$("#patientcare").change(function() {
+				//alert($('#city_id').val());
+				window.location = $('#patientcare').val();
+			});
+		})
+	</script>
+	<link rel="stylesheet" href="https://digicampus.sriramachandra.edu.in/plugins/phpgrid/select2.css">
+	<script src="https://digicampus.sriramachandra.edu.in/plugins/phpgrid/select2.min.js"></script>
+	<!-- For PHPGrid.org Start
+   <link rel="stylesheet" href="https://digicampus.sriramachandra.edu.in/plugins/phpgrid/lib/js/themes/redmond/jquery-ui.custom.css">
+   <link rel="stylesheet" href="https://digicampus.sriramachandra.edu.in/plugins/phpgrid/lib/js/jqgrid/css/ui.jqgrid.css">
+
+   <link rel="stylesheet" href="https://digicampus.sriramachandra.edu.in/plugins/phpgrid/select2.css">
+    For PHPGrid.org End 
+
+    For PHPGrid.org Start 
+   <script src="https://digicampus.sriramachandra.edu.in/plugins/phpgrid/lib/js/ckeditor/ckeditor.js" type="text/javascript"></script>
+   <script src="https://digicampus.sriramachandra.edu.in/plugins/phpgrid/lib/js/jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+   <script src="https://digicampus.sriramachandra.edu.in/plugins/phpgrid/lib/js/jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+   <script src="https://digicampus.sriramachandra.edu.in/plugins/phpgrid/lib/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
+   <script src="https://digicampus.sriramachandra.edu.in/plugins/phpgrid/select2.min.js"></script>
+   For PHPGrid.org End -->
+
+	<script src="https://digicampus.sriramachandra.edu.in/webcam.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+</head>
+
+<body class="theme-cyan">
+	<div class="page-loader-wrapper">
+		<div class="loader">
+			<div class="m-t-30"><img src="/img/logo_load.png" width="124" height="84" alt="SRU"/></div>
+			<p>Please wait...</p>
+		</div>
+	</div>
+	<nav class="navbar navbar-fixed-top">
+		<div class="container-fluid" style="background-color: #003a63;border-top: 3px solid #d0261d;box-shadow: 0 0 10px 5px rgba(0,0,0,.3);">
+			<div class="navbar-btn">
+				<button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
+			</div>
+			<div class="navbar-brand">
+				<a href="/users/dashboard"><img src="/img/logo.png" width="100" height="" alt="SRU" class="img-responsive logo"/></a>			</div>
+			<div class="navbar-right">
+				<!--form id="navbar-search" class="navbar-form search-form">
+                    <input value="" class="form-control" placeholder="Search here..." type="text">
+                    <button type="button" class="btn btn-default"><i class="icon-magnifier"></i></button>
+                </form-->
+
+				<div class="pcare">
+									</div>
+				<div id="navbar-menu">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="/users/calendar" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i class="icon-calendar"></i></a>						</li>
+						<!--<li>
+                            <a href="#" class="icon-menu d-none d-sm-block"><i class="icon-bubbles"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="icon-menu d-none d-sm-block"><i class="icon-envelope"></i><span class="notification-dot"></span></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+                                <i class="icon-bell"></i>
+                                <span class="notification-dot"></span>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown"><i class="icon-equalizer"></i></a>
+                        </li>-->
+						<li>
+							<a href="/users/logout" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i class="fa fa-lock"></i></a>						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div id="left-sidebar" class="sidebar">
+		<div class="">
+			<!-- <div class="sidebar-scroll"> -->
+							<div class="user-account">
+					<img src="/img/../uploads/student_picture/E0322039.png" class="rounded-circle user-photo" alt=""/>					<div class="dropdown">
+						<span>Welcome,</span>
+						<a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>
+								BARATH KUMAR P 									<span style="color:red">
+										E0322039									</span>
+								</strong>
+							<br />
+							<span style="font-size: 14px;">
+															</span>
+						</a>
+													<ul class="dropdown-menu dropdown-menu-right account">
+																	<li><a href="https://digicampus.sriramachandra.edu.in/Users/profile"><i class="icon-user"></i>My Profile</a></li>
+																									<li class="divider"></li>
+									<li><a href="https://digicampus.sriramachandra.edu.in/Users/changepassword"><i class="icon-user"></i>Change Password</a></li>
+								
+								<li></li>
+								<li><a href="/users/logout"><i class="icon-power"></i>Logout</a></li>
+							</ul>
+											</div>
+				</div>
+						<ul class="nav nav-tabs">
+				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#menu">Menu</a></li>
+				<!--li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Chat"><i class="icon-book-open"></i></a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#setting"><i class="icon-settings"></i></a></li-->
+			</ul>
+			<div class="tab-content p-l-0 p-r-0" id="style-5">
+				<div class="tab-pane active" id="menu">
+					<nav class="sidebar-nav">
+						<ul class="main-menu metismenu">
+							<!-- <ul class="main-menu metismenu"> -->
+
+															<li><a href="/users/dashboard"><i class="fa fa-home fa-2x"></i><span>Dashboard</span></a></li>
+							
+
+
+
+							
+															<li><a href="/users/changepassword"><i class="icon-key"></i><span>Change Password </span></a></li>
+							
+														<!-- Menu Disabled -->
+							<!--  -->
+							
+
+							<!-- Menu Disabled -->
+							<!-- 								<li><a href="javascript:void(0);" class="has-arrow"><i class="fa fa-leanpub"></i><span>COVID Training</span> </a>
+									<ul>
+										<li><a href="/videos/covidtraining">COVID Training</a></li>
+									</ul>
+
+									<ul>
+										<li><a href="/videos/acuteworsening">Acute Worsening</a></li>
+
+									</ul>
+									<ul>
+										<li><a href="/videos/anticoagulation">Anti Coagulation</a></li>
+
+									</ul>
+									<ul>
+										<li><a href="/videos/bloodsugar">Blood Sugar</a></li>
+
+									</ul>
+									<ul>
+										<li><a href="/videos/corticosteroids">Corticosteroids</a></li>
+
+									</ul>
+									<ul>
+										<li><a href="/videos/mucor">Mucor</a></li>
+
+									</ul>
+									<ul>
+										<li><a href="/videos/postcovid">Post Covid</a></li>
+
+									</ul>
+								</li>
+								 -->
+
+							
+							
+																														<!--li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>Timetable</span> </a>
+									<ul>
+										<li><a href="/classtimetables/semestertimetable">Semester Timetable</a></li>
+										<li><a href="/classtimetables/classtable">Session Timetable</a></li>
+									</ul>
+								</li>
+								<li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>Attandance</span> </a>
+									<ul>
+										<li><a href="/attandance/semestertimetable">Attandance</a></li>
+									</ul>
+								</li>
+								<li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>Subjects</span> </a>
+									<ul>
+										<li><a href="/syllabus">Syllabus</a></li>
+										<li><a href="/syllabus">Answers</a></li>
+										<li><a href="/syllabus">Assignments</a></li>
+									</ul>
+								</li>
+								<li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>COE</span> </a>
+									<ul>
+										<li><a href="/syllabus">Exam Schedule</a></li>
+										<li><a href="/syllabus">Results</a></li>
+									</ul>
+								</li>
+								<li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>News</span> </a>
+									<ul>
+										<li><a href="/syllabus">Announcements</a></li>
+										<li><a href="/syllabus">Events</a></li>
+									</ul>
+								</li>
+								<li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>Fees</span> </a>
+									<ul>
+										<li><a href="/syllabus">Fees</a></li>
+									</ul>
+								</li>
+								<li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>Settings</span> </a>
+									<ul>
+										<li><a href="/days">Holidays</a></li>
+									</ul>
+								</li-->
+								<!--li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>Marks</span> </a>
+									<ul>
+										<li><a href="/marks">Mark</a></li>
+										<li><a href="/marks/marksheet">Mark Sheet</a></li>
+									
+									</ul>
+								</li-->
+																	<!--<style type="text/css">
+	.blink{
+		width:220px;
+		height: 30px;
+		background-color: white;
+		padding: 0px;	
+		text-align: left;
+		line-height: 0px;
+	}
+	.span{
+		color: red;
+		font-weight: bold;
+		animation: blink 1s linear infinite;
+	}
+	@keyframes blink{
+		0%{opacity: 0;}
+		50%{opacity: .5;}
+		100%{opacity: 1;}
+	}
+	</style>		   
+	<li><a href="/users/dashboard"><i class="fa fa-camera"></i><span class="span">Dashboard</span></a></li>-->
+																		<li><a href="javascript:void(0);" class="has-arrow"><i class="fa fa-suitcase"></i><span>Services</span> </a>
+										<ul>
+											<!--<li><a href="/assignments">Assignments</a></li>-->
+											<!--<li><a href="/complaints">Complaints</a></li>-->
+											<!--<li><a href="/questions">Questions</a></li>
+										<li><a href="/national-services">National Services</a></li>
+																					<li><a href="/summer-researchs">Summer Research</a></li>
+											-->
+											<!--li></li-->
+											<li><a href="/crfpoc-requests">New POC</a></li>
+																							<!--li></li-->
+																						
+										</ul>
+									</li>
+																									<!--li><a href="javascript:void(0);" class="has-arrow"><i class="fa fa-clock-o"></i><span>Student Attendance</span> </a>
+									<ul>
+										<li><a href="/students/studentwiseattendance">Attendance</a></li>
+									</ul>
+								</li-->
+																<li><a href="/admissions/listfeereceipt"><i class="fa fa-comments"></i> Fee Receipt</a></li>
+								<li><a href="/student-fee-demands/student-fee-pay" style="color:red;"><i class="fa fa-comments"></i> Fee Payment</a></li>
+								<!--<li><a href="/videos/feepayment"><i class="fa fa-comments"></i> Fee Payment Video</a></li>
+								-->
+								<!-----------  Start Line Added by Parthiban - Jan-04-2019  ---------->
+																	<li><a href="javascript:void(0);" class="has-arrow"><i class="fa fa-book"></i><span>Library & E-Learning</span> </a>
+										<ul>
+											<li><a href="/library-master-books/book-list">Books</a></li>
+											<li><a href="/library-master-books/book-bank-list">Book Bank</a></li>
+											<li><a href="/library-master-books/book-journal-list">Journals</a></li>
+											<li><a href="/library-master-books/book-non-book-list">Non Book Materials</a></li>
+											<li><a href="/library-books-issues/borrowed-history-list">Borrowed History</a></li>
+																																				<li><a href="https://hselearning.sriher.com/autologin.php?username=e0322039&password=E0322039@22" target="_blank">E-Learning (Moodle)</a></li>
+																						<li><a href="/students/elearning">E-Learning links</a></li>
+											<li><a href="http://172.16.1.222:8119/" target="_blank">OPAC</a></li>
+											<li><a href="http://cbcs.sriramachandra.edu.in/digicampus/dFVxdURhVVNkeVpUZjEvMVNXOXlIeXovRU0vYkdVL2hnUzFEdHhWdmIyQT0=" target="_blank">CBCS Login</a></li>
+
+										</ul>
+									</li>
+
+									<li><a href="javascript:void(0);" class="has-arrow"><i class="fa fa-pencil-square"></i><span>Grievances</span> </a>
+										<ul>
+											<li><a href="/grievances">Online Grievance</a></li>
+											<li><a href="https://digicampus.sriramachandra.edu.in/files/grievance/STUDENT_GRIEVANCE_FORM_OFFLINE.pdf" target="_blank">Offline Grievance</a></li>
+										</ul>
+									</li>
+
+									<li><a href="/vrlabs/vruserdashboard"><i class="fa fa-comments"></i> Vrlab</a></li>
+
+
+																		<!--<li><a href="javascript:void(0);" class="has-arrow"><span>Grievance</span> </a>
+									<ul>
+										
+									</ul>
+								</li>-->
+																<!-----------  End Line Added by Parthiban - Jan-04-2019  ---------->
+								<!-----------  Start Line Added by Yasodha - Feb-16-2019  ---------->
+								<!--li></li-->
+
+								<!--<li><a href="/notifications/notification-for-student"><i class="fa fa-bell"></i><span>Notification</span></a></li>-->
+
+								<li></li>
+
+								<li><a href="javascript:void(0);" class="has-arrow"><i class="fa fa-comments"></i><span>Examinations</span> </a>
+									<ul>
+										<li><a href="/student-fee-demands/examfees">Exam Fee Notification</a></li>
+										<!--li></li-->
+										<li><a href="/student-fee-demands/theoryschedule">Theory Schedule</a></li>
+										<li><a href="/student-fee-demands/practicalschedule">Practical Schedule</a></li>
+										<li><a href="/student-fee-demands/hallticket">Hall Ticket</a></li>
+										<li></li>
+										<li><a href="/student-fee-demands/marksheet">Mark Sheet</a></li>
+										<li><a href="/students/studentiamarks">IA Mark</a></li>
+									</ul>
+								</li>
+
+								<!-----------  End Line Added by Yasodha - Feb-16-2019  ---------->
+								<!-----------  Start Line Added by Parthiban - Feb-18-2019  ---------->
+																	<!--<li><a href="javascript:void(0);" class="has-arrow"><i class="fa fa-tasks"></i><span>Polls</span> </a>
+									<ul>
+										
+									 </ul>
+									</li>-->
+									
+									<li><a href="javascript:void(0);" class="has-arrow"><i class="fa fa-tasks"></i><span>Feedback & Survey </span> </a>
+										<ul>
+											<!--li></li-->
+											<!-- <li><a href="/studentfeedbacksurveys/add">Student Satisfaction Survey</a></li> -->
+											<li><a href="/studentcurriculumfeedbacks/add">Student Curriculum Feedback</a></li>
+											<li><a href="/librarysurveyforms/add">Library Feedback</a></li>
+											<!-- Start Added by Parthiban - 02-April-2021 Reg : Elective Feedback Module --->
+																						<li><a href="https://cbcs.sriher.com/RTAzMjIwMzk=" target="_blank">Elective Feedbacks</a></li>
+											<!-- End Added by Parthiban - 02-April-2021 Reg : Elective Feedback Module --->
+																						<!--<li></li>
+											<li></li>-->
+										</ul>
+									</li>
+
+									<li><a href="/formative-assessment-forms/studentindex"><i class="fa fa-check-circle-o"></i><span>PG Appraisal Form</span></a></li>
+									
+									<!-- <li><a href="/vrlabs/vruserdashboard"><i class="fa fa-comments"></i> Vrlab</a></li> -->
+
+																								<!-----------  End Line Added by Parthiban - Feb-18-2019  ---------->
+														
+														
+							
+							
+							
+							
+							
+
+
+															<li>
+									<a href="/students/student-counselling"><i class="icon-docs"></i><span>Student Counselling</span></a>								</li>
+															
+
+																												<!--							<li>
+                                <a href="/<?php echo BASE_URL; ?>uploads/mainmenufiles/1.MOBILE NUMBERS OF SRMC DOCTORS&NURSES.pdf" target="_blank"><i class="fa fa-phone"></i> MOBILE NUMBERS OF SRMC DOCTORS&NURSES</a>							</li>
+							-->
+
+														
+																																										<li><a href="javascript:void(0);" class="has-arrow"><i class="icon-docs"></i><span>Documents</span> </a>
+								<ul>
+																		<li><a href="https://digicampus.sriramachandra.edu.in/uploads/mainmenufiles/Student_Manual_2023-24.pdf" target="_blank">Student Manual</a></li>
+
+									
+									<!--  -->
+
+								</ul>
+							</li>
+
+
+															<!-- <li><a href="/vrlabs/vruserdashboard"><i class="fa fa-comments"></i> Vrlab</a></li> -->
+								<li><a href="/users/otherpasswords"><i class="icon-key"></i><span>Password Management </span></a></li>
+																					<li>
+								<a href="/users/logout"><i class="fa fa-lock"></i><span>Logout</span></a>							</li>
+						</ul>
+					</nav>
+					<!--p class="text-muted text-center" style="position: absolute;bottom: 70px;margin: 5%;">Updated as on: 02/05/2025</p-->
+				</div>
+			</div>
+		</div>
+	</div>
+		<style>
+	#customers {
+		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	#customers td,
+	#customers th {
+		border: 1px solid #ddd;
+		padding: 8px;
+		text-align: center;
+	}
+
+	#customers tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+
+	#customers tr:hover {
+		background-color: #ddd;
+	}
+
+	#customers th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: center;
+		background-color: deepskyblue;
+		color: white;
+	}
+
+	.l-icon {
+		font-size: 3em;
+	}
+
+	.l-icon6 {
+		font-size: 6em;
+	}
+
+	.displaydata {
+		font-size: 1.25em;
+		background: #2ea616;
+		color: #FFF;
+		padding: 3px 8px;
+		border-radius: 12px;
+		vertical-align: middle;
+	}
+
+	a:focus {
+		color: inherit;
+	}
+
+	.blink_me {
+		animation: blinker 5s linear infinite;
+	}
+
+	@keyframes blinker {
+		50% {
+			opacity: 0;
+		}
+	}
+</style>
+<style>
+	.inner-container {
+		position: relative;
+		max-width: 100%;
+		width: 100%;
+		margin: 0 auto;
+
+	}
+
+	.inner-container .bx-sec {
+		position: relative;
+		width: 100%;
+		display: table;
+		padding: 1rem 2.75rem;
+		background: #edefee;
+	}
+
+	.inner-container .bx-sec .bx-rw {
+		position: relative;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		gap: 68px 26px;
+		flex-wrap: wrap;
+		/*justify-content: space-between;*/
+	}
+
+	.lnk-bx {
+		width: 100%;
+		max-width: 200px;
+	}
+
+	.bx-sec .bx-rw .bx {
+		width: 150px;
+		max-width: 100%;
+
+		position: relative;
+		border: 1px solid #003a63;
+		border-radius: 10px;
+		background-color: #fff;
+
+	}
+
+	.bx-rw .bx .icn-cont {
+		display: flex;
+		min-height: 70px;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.bx-rw .bx .icn-cont .img-cont {
+		position: relative;
+		width: auto;
+		display: table;
+		height: 130px;
+
+	}
+
+
+	.bx-rw .bx .men-txt {
+		position: relative;
+		width: auto;
+		display: flex;
+		min-height: 60px;
+		align-items: center;
+		justify-content: center;
+		background: #003a63;
+		border-radius: 8px;
+		font-size: 1.2rem;
+		color: #fff;
+		line-height: 1.5rem;
+		padding: 3px;
+		text-align: center;
+	}
+
+	/* new code by aarthi */
+	.abcbx {
+		border-radius: 4px;
+		border: 1px solid #01004c;
+		background-color: white;
+		color: #01004c;
+		max-width: 400px;
+		/* height: 197px; */
+	}
+
+	.abcbx .row {
+		padding: 5px;
+		/* Adjust padding as needed */
+	}
+
+	.abcbx .idstatus {
+		background-color: #01004c;
+		border-radius: 4px;
+		position: relative;
+		top: -4px;
+		height: 41px;
+		color: white;
+		left: -2px;
+		width: 50%;
+		padding: 5px;
+	}
+
+	.abcbx .pending {
+		background-color: white;
+		border-radius: 4px;
+		position: relative;
+		top: -4px;
+		height: 21px;
+		color: red;
+		padding: 5px;
+	}
+
+
+	.abcbxbl {
+		border-radius: 10px;
+		border-top: 1px solid #01004c;
+		background-color: white;
+		position: inherit;
+		bottom: 15px;
+	}
+
+	.abctriangle-left {
+		width: 0;
+		height: 0;
+		border-top: 25px solid transparent;
+		border-right: 20px solid #01004c;
+		border-bottom: 20px solid transparent;
+		right: 0px;
+		position: absolute;
+		/* left: 112px; */
+		top: 52px;
+	}
+
+	.abctriangle-right {
+		width: 0;
+		height: 0;
+		border-top: 25px solid transparent;
+		border-left: 20px solid #01004c;
+		border-bottom: 25px solid transparent;
+		position: absolute;
+		left: 0px;
+		top: 46px;
+	}
+
+	.abcbxblr {
+		border-radius: 10px;
+		border-top: 1px solid #01004c;
+		background-color: white;
+		position: inherit;
+		bottom: 8px;
+	}
+
+	.abcbtn {
+		border-radius: 6px;
+		border: 1px solid #01004c;
+		background: #01004c;
+		color: white;
+		width: 80px;
+		height: 34px;
+	}
+
+	.abctxtbx {
+		border: 1px solid #01004c;
+		/* max-width: 155px; */
+		width: 100%;
+		font-size: 16px;
+	}
+
+	/* oldcode by aarthi */
+	/* .abcbx {
+		border-radius: 4px;
+		border: 1px solid #01004c;
+		background-color: white;
+		color: #01004c;
+		max-width: 400px;
+		/* height: 197px; */
+	/* } */
+
+	/* .abcbx .row {
+		padding: 5px;
+		/* Adjust padding as needed 
+	} */
+
+	/* .abcbx .col-sm-6.idstatus {
+		background-color: #01004c;
+		border-radius: 4px;
+		position: relative;
+		top: -4px;
+		height: 41px;
+		color: white;
+		left: -2px;
+		padding: 5px;
+	} */
+
+	/* .abcbx .col-sm-6.pending {
+		background-color: white;
+		border-radius: 4px;
+		position: relative;
+		top: -4px;
+		height: 21px;
+		color: red;
+		padding: 5px;
+	}
+ */
+
+	/* .abcbxbl {
+		border-radius: 10px;
+		border-top: 1px solid #01004c;
+		background-color: white;
+		position: inherit;
+		bottom: 15px;
+	} */
+
+	/* .abcbxr {
+		border-radius: 4px;
+		border: 1px solid #01004c;
+		background-color: white;
+		color: #01004c;
+		max-width: 400px;
+		/* height: 197px; 
+	} */
+
+	/* .abcbxr .row {
+		padding: 5px;
+		/* Adjust padding as needed 
+	} */
+
+	/* .abcbxr .col-sm-6.idstatus {
+
+		background-color: #01004c;
+		border-radius: 4px;
+		position: relative;
+		top: -4px;
+		height: 41px;
+		color: white;
+		left: -2px;
+		padding: 5px;
+	} */
+
+	/* .abcbxr .col-sm-6.pending {
+
+		background-color: white;
+		border-radius: 4px;
+		position: relative;
+		top: -4px;
+		height: 21px;
+		color: red;
+		padding: 5px;
+	}
+
+	.abctriangle-left {
+		width: 0;
+		height: 0;
+		border-top: 25px solid transparent;
+		border-right: 20px solid #01004c;
+		border-bottom: 20px solid transparent;
+		right: 0px;
+		position: absolute;
+		/* left: 112px; 
+		top: 52px;
+	} **/
+
+	/* .abctriangle-right {
+		width: 0;
+		height: 0;
+		border-top: 25px solid transparent;
+		border-left: 20px solid #01004c;
+		border-bottom: 25px solid transparent;
+		position: absolute;
+		left: 0px;
+		top: 46px;
+	} */
+
+	/* .abcbxblr {
+		border-radius: 10px;
+		border-top: 1px solid #01004c;
+		background-color: white;
+		position: inherit;
+		bottom: 15px;
+	}
+
+	.abcbtn {
+		border-radius: 6px;
+		border: 1px solid #01004c;
+		background: #01004c;
+		color: white;
+		width: 80px;
+		height: 34px;
+	}
+
+	.abctxtbx {
+		border: 1px solid #01004c;
+		max-width: 155px;
+		width: 100%;
+	} */
+
+	/* antiragging code */
+	.antiraggingbx {
+		border-radius: 4px;
+		border: 1px solid #01004c;
+		background-color: white;
+		color: #01004c;
+		max-width: 400px;
+		/* height: 197px; */
+	}
+
+	.antiraggingbx .row {
+		padding: 5px;
+		/* Adjust padding as needed */
+	}
+
+	.antiraggingbx .idstatus {
+		background-color: #01004c;
+		border-radius: 4px;
+		position: relative;
+		top: -4px;
+		height: 41px;
+		color: white;
+		left: -2px;
+		width: 50%;
+		padding: 5px;
+	}
+
+	.antiraggingbx .pending {
+		background-color: white;
+		border-radius: 4px;
+		position: relative;
+		top: -4px;
+		height: 21px;
+		color: red;
+		padding: 5px;
+	}
+
+
+	.antiraggingbxbl {
+		border-radius: 10px;
+		border-top: 1px solid #01004c;
+		background-color: white;
+		position: inherit;
+		bottom: 15px;
+	}
+
+	.antiraggingtriangle-left {
+		width: 0;
+		height: 0;
+		border-top: 25px solid transparent;
+		border-right: 20px solid #01004c;
+		border-bottom: 20px solid transparent;
+		right: 0px;
+		position: absolute;
+		/* left: 112px; */
+		top: 52px;
+	}
+
+	.antiraggingtriangle-right {
+		width: 0;
+		height: 0;
+		border-top: 25px solid transparent;
+		border-left: 20px solid #01004c;
+		border-bottom: 25px solid transparent;
+		position: absolute;
+		left: 0px;
+		top: 46px;
+	}
+
+	.antiraggingbxblr {
+		border-radius: 10px;
+		border-top: 1px solid #01004c;
+		background-color: white;
+		position: inherit;
+		bottom: 8px;
+	}
+
+	.antiraggingbtn {
+		border-radius: 6px;
+		border: 1px solid #01004c;
+		background: #01004c;
+		color: white;
+		width: 80px;
+		height: 34px;
+	}
+
+	.antiraggingtxtbx {
+		border: 1px solid #01004c;
+		/* max-width: 155px; */
+		width: 100%;
+		font-size: 16px;
+	}
+
+	.img-responsive1 {
+		width: 75px;
+	}
+
+	.bx .icn-cont .img-cont img {
+		width: 100%;
+		padding: 10px;
+		height: 100%;
+	}
+</style>
+
+<!-- -----------------Navbar Tab Style Starts------------------------- -->
+<style>
+	.acc_nav_bar .img-responsive {
+		width: 70px !important;
+	}
+
+	.acc_nav_bar .bx {
+		width: 150px;
+		max-width: 100%;
+		position: relative;
+		border: 1px solid #003a63;
+		border-radius: 10px;
+		background-color: #fff;
+
+	}
+
+	.acc_nav_bar .bx .icn-cont {
+		display: flex;
+		min-height: 112px;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.acc_nav_bar .bx .icn-cont:hover {
+		background: #e7e0ff;
+		border-radius: 9px;
+	}
+
+	.acc_nav_bar .bx .icn-cont .img-cont {
+		position: relative;
+		width: auto;
+		display: table;
+		/* height: 130px; */
+	}
+
+	.acc_nav_bar .bx .men-txt {
+		position: relative;
+		width: auto;
+		display: flex;
+		min-height: 75px;
+		align-items: center;
+		justify-content: center;
+		background: #003a63;
+		border-radius: 8px;
+		font-size: 16px;
+		color: #fff;
+		line-height: 1.5rem;
+		padding: 2px;
+		text-align: center;
+	}
+
+	.acc_nav_bar .nav-item .nav-link {
+		color: #01004c !important;
+	}
+
+	.nav-tabs .nav-item.show .nav-link,
+	.nav-tabs .nav-link.active {
+		background: #01004c;
+		color: #fff !important;
+	}
+</style>
+<!--   Model style -------------->
+<style>
+	.modal {
+		display: block;
+		/* Always visible */
+		position: fixed;
+		z-index: 1000;
+		left: 0;
+		top: 0;
+		width: 100%;
+		/* max-width: 400px; */
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+
+	.modal-content {
+		background-color: #fff;
+		margin: 5% auto;
+		padding: 5px;
+		border-radius: 8px;
+		width: 90%;
+		height: 80%;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		text-align: center;
+	}
+
+	/* Hide close button */
+	.close-btn {
+		display: none;
+	}
+
+	/* Responsive Design */
+	@media (min-width: 600px) {
+		.modal-content {
+			width: 90%;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.modal-content {
+			width: 90%;
+		}
+	}
+</style>
+
+<!-- -----------------Navbar Tab Style Ends------------------------- -->
+
+
+				<div id="main-content">
+					<div class="container-fluid">
+						<div class="block-header">
+							<div class="row" style="row-gap:10px;">
+								<div class="col-lg-2 col-md-2 col-sm-2">
+									<h2>Dashboard</h2>
+								</div>
+
+								<div class="d-flex flex-wrap" style="gap: 10px;z-index:1;position:relative;">
+
+
+
+									<!-- <div class="block-header d-flex justify-content-between align-items-center">
+                                            <div class="quick-menu d-flex" style="gap: 3px;">
+                                                <a href="#dashboard" class="btn btn-sm btn-primary">
+                                                    <i class="fa fa-tachometer"></i> Dashboard
+                                                </a>
+                                                <a href="#notifications" class="btn btn-sm btn-info">
+                                                    <i class="fa fa-bell"></i> Notifications
+                                                </a>
+                                                <a href="#settings" class="btn btn-sm btn-warning">
+                                                    <i class="fa fa-cog"></i> Settings
+                                                </a>
+                                            </div>
+                                        </div> -->
+
+
+
+
+									<!-- 
+										
+										<div class="flex-item">
+											<a href="https://digicampus.sriramachandra.edu.in/StudentFeeDemands/hallticket" class="btn btn-primary btn-sm w-100">Hall Ticket</a>
+										</div>
+
+										<div class="flex-item">
+											<a href="http://cbcs.sriramachandra.edu.in/digicampus/dFVxdURhVVNkeVpUZjEvMVNXOXlIeXovRU0vYkdVL2hnUzFEdHhWdmIyQT0=" target="_blank" class="btn btn-primary btn-sm w-100">CBCS Login</a>
+										</div>
+
+										<div class="flex-item">
+											<a href="https://digicampus.sriramachandra.edu.in/Classtimetables/timetablereport2" class="btn btn-primary btn-sm w-100">Class Timetable</a>
+										</div>
+
+										
+										
+										
+																			 -->
+
+																			<div class="block-header d-flex justify-content-between align-items-center">
+											<div class="quick-menu d-flex flex-wrap" style="gap: 3px;">
+												
+												<a href="https://digicampus.sriramachandra.edu.in/StudentFeeDemands/hallticket" class="btn btn-sm btn-success">
+													<i class="fa fa-ticket"></i> Hall Ticket
+												</a>
+
+												<a href="http://cbcs.sriramachandra.edu.in/digicampus/dFVxdURhVVNkeVpUZjEvMVNXOXlIeXovRU0vYkdVL2hnUzFEdHhWdmIyQT0=" target="_blank" class="btn btn-sm btn-secondary">
+													<i class="fa fa-sign-in"></i> CBCS Login
+												</a>
+
+												<a href="https://digicampus.sriramachandra.edu.in/Classtimetables/timetablereport2" class="btn btn-sm btn-warning">
+													<i class="fa fa-calendar"></i> Class Timetable
+												</a>
+
+												
+												
+												
+																							</div>
+										</div>
+																	</div>
+							</div>
+
+
+						</div>
+						<div class="row clearfix">
+							<div class="col-lg-4 col-md-4">
+								<div class="card profile-header">
+									<div class="body">
+										<div class="profile-image text-center m-t-30 m-b-30">
+											<img src="/img/../uploads/student_picture/E0322039.png" class="rounded-circle user-photo" alt=""/>											<h4 class="m-b-0"><strong>BARATH KUMAR P</strong></h4>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-8 col-md-8">
+								<div class="card member-card">
+									<div class="body text-left">
+										<div class="row">
+											<div class="col-lg-6 col-md-6">
+												<strong>Unique no.</strong>
+												<p>E0322039</p>
+												<strong>Admission Year</strong>
+												<p>2022-2023</p>
+												<strong>Faculty</strong>
+												<p>Sri Ramachandra Faculty of Engineering & Technology</p>
+												<strong>Degree Type</strong>
+												<p>Under Graduate</p>
+												<strong>Programme</strong>
+												<p>B.Tech. Computer Science and Engineering (Artificial Intelligence and Data Analytics)</p>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												<strong>Father</strong>
+												<p>PARTHIBAN N</p>
+												<strong>Mother</strong>
+												<p>LAKSHMIDEVI P</p>
+												<strong>Address</strong>
+												<p>13/99,PONNIAMMAN KOVIL STREET, PERIYAKOLUTHUVANCHERRY, IYYAPPANTHANGAL,CHENNAI-122.  </p>
+												<strong>Mobile</strong>
+												<p>8939302512</p>
+												<strong>Email</strong>
+												<p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4321223122372b332231372b2a7173737628362e223103242e222a2f6d202c2e">[email&#160;protected]</a></p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--<div class="card top_counter">
+					<div class="body">
+						<div class="content">
+							<div class="header"><h2>Attendance</h2></div>
+						</div>
+						 <hr>
+						<div id="top_counter3" class="carousel vert slide" data-ride="carousel" data-interval="2300">
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<div class="icon"><i class="fa fa-users"></i> </div>
+									<div class="content">
+										<div class="text">Total</div>
+										<h5 class="number"></h5>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<div class="icon"><i class="fa fa-user"></i> </div>
+									<div class="content">
+										<div class="text">Present (Sessions)</div>
+										<h5 class="number"> / </h5>
+									</div>
+								</div>-->
+								<!--div class="carousel-item">
+									<div class="icon"><i class="fa fa-exclamation-circle"></i> </div>
+									<div class="content">
+										<div class="text">Absent (Hours)</div>
+										<h5 class="number">15</h5>
+									</div>
+								</div
+							</div>
+						</div> 
+					</div>
+				</div>-->
+							</div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-lg-6 col-md-6 col-sm-6">
+								<div class="card">
+									<div class="body ">
+										<div class="container-fluid ">
+											<div class="row " style="row-gap:10px">
+																									<div class="col-lg-7 col-md-12 col-sm-12">
+														<div class="card abcbx">
+															<div class="row px-3 py-1 ">
+																<div class=" idstatus text-center">
+																	ABC Id status:
+																</div>
+																<div class="col-6 pending " style="justify-content: center;display: flex;color:green">
+																	SUBMITTED
+																</div>
+															</div>
+															<div class="container-fluid abcbxbl  text-center">
+																<div class="abctriangle-left"></div>
+																<div class="abctriangle-right"></div>
+
+																<p class="font-weight-bold" style="text-align: center;">Academic Bank of Credits</P>
+
+																<p class="m-0"> Your ABC ID is:</p>
+																<h4 class="font-weight-bold"> 484-105-619-386</h4>
+																<p class="m-0 "> Submitted Date:</p>
+																<p class="trkgblue">28.10.2023<span style="color:red"> 07:30:00</span> </p>
+															</div>
+															<div class="m-4 card-body cardboxes">
+																
+															</div>
+														</div>
+													</div>
+																							</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6">
+								<div class="card">
+									<div class="body ">
+										<div class="container-fluid ">
+											<div class="row " style="row-gap:10px">
+																									<div class="col-lg-12 col-md-12 col-sm-12">
+														<div class="card antiraggingbx">
+															<div class="row px-3 py-1 ">
+																<div class=" idstatus text-center">
+																	Anti-Ragging Id status:
+																</div>
+																<div class="col-6 pending text-center">
+																	PENDING
+																</div>
+															</div>
+															<!-- studentid -->
+															<input type="hidden" id="student_id" name="student_id" value="33203">
+															<div class="container-fluid antiraggingbxbl">
+																<p class="font-weight-bold" style="text-align: center;">Anti-Ragging Id</P>
+																<div class="row font-weight-bold ">
+																	<div class="container">
+																		<div class="row">
+																			<div class="col-sm-8 col-lg-8 col-md-8">
+																				<div class="input number"><input type="number" name="antiraggingid" class="form-control antiraggingtxtbx numeric" id="antiraggingid" placeholder="Numeric Only (7 Digits)" maxlength="7"/></div>																				<!-- <p style="font-weight: normal;">Ex. 1234567890 </p> -->
+																			</div>
+																			<div class="row">
+																				<div class="col-lg-6 col-md-12 col-sm-12 mt-4 ">
+																					<div class="custom-file" style="border:1px solid black;">
+																						<div class="input file"><input type="file" name="uploadfileanti" class="form-control" onchange="ValidateRecommendanti(this)" id="uploadfileanti"></div>																					</div>
+																					<div id="fileListanti"></div>
+
+																				</div>
+																				<div class="col-lg-2 col-md-12 col-sm-12">
+																					<button type="button" class="btn bdr_rads mt-4" style="background:#01004c;color:#fff" onclick="addantifiles();">+</button>
+																				</div>
+
+																				<div class="col-lg-5 col-md-12 col-sm-12">
+																					<div class="container p-3">
+																						<table class="table" id="tbluploadedfileanti">
+																							<thead>
+																								<tr>
+																									<th>Action</th>
+																									<th>Filename</th>
+																								</tr>
+																							</thead>
+																							<tbody class="uploadedfileanti">
+																							</tbody>
+																						</table>
+
+																					</div>
+																				</div>
+																			</div>
+
+																			<div class="col-lg-4 col-sm-4 col-md-4">
+																				<!-- <button class="antiraggingbtn " type="submit">SUBMIT</button> -->
+																				<!-- <button type="button" class="antiraggingbtn" onclick="submitantiraggingid()">Submit</button> -->
+
+																				<button class="antiraggingbtn" onclick="submitantiraggingid();" type="button">Submit</button>																			</div>
+																			<div class="col-lg-12 col-sm-12 col-md-12" style="color:red;font-weight: normal;" id="arerrors"></div>
+																		</div>
+																	</div>
+																</div>
+
+																<div class="row">
+																	<div class="container">
+																		<div class="d-flex justify-content-around  flex-wrap m-1">
+																			<div class="text-center">
+																				<div class="trkgblue text-left"> Don't have Antiragging Id?</div>
+																				<div class=" trkgblue  text-left">You can create a one for you.</div>
+																			</div>
+																			<div class="text-center">
+																				<div class="trkgblue text-left">visit </div>
+																				<div class="trkgblue text-left "><a href="https://antiragging.in/" target="_blank">www.antiragging.in </a> </div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+																							</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+
+
+
+						<div class="col-lg-12 col-md-12">
+															<div class="row">
+
+									<div class="col-lg-6 col-md-12 col-sm-12">
+										<div class="card top_counter ">
+											<div class="body row p-t-0">
+												<div class="content col-md-12 col-sm-12">
+													<div class="text text-white">
+														<h5 class="number text-white">Annual Tution Fee Circular</h5>
+													</div>
+												</div>
+												<div class="row body p-t-0 ml-1 mr-1 col-md-12 ">
+
+													<div class="list-group col-lg-12 col-md-12 col-sm-12 p-l-2 p-r-2">
+														<a style="background-color:#7cf7ba;" href="https://digicampus.sriramachandra.edu.in/Notifications/view/2505" class="list-group-item list-group-item-action flex-column align-items-start">
+															<div class="d-flex w-100 justify-content-between">
+																<h6 class="mb-1">Title : Payment of Annual Fee for the Academic year 2024-25 due date is  31.07.2024.	</h6>
+															</div>
+															<div class="d-flex w-100 justify-content-between">
+																<small> Date - <span class="badge badge-danger">28-06-2024</span></small>
+															</div>
+
+														</a>
+													</div>
+
+												</div>
+
+
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-12 col-sm-12">
+										<div class="card top_counter ">
+											<div class="body row p-t-0">
+												<div class="content col-md-12 col-sm-12">
+													<div class="text text-white">
+														<h5 class="number text-white">Annual Exam Fee Circular</h5>
+													</div>
+												</div>
+												<div class="row body p-t-0 ml-1 mr-1 col-md-12 ">
+
+													<div class="list-group col-lg-12 col-md-12 col-sm-12 p-l-2 p-r-2">
+														<a style="background-color:#7cf7ba;" href="https://digicampus.sriramachandra.edu.in/Notifications/view/2518" class="list-group-item list-group-item-action flex-column align-items-start">
+															<div class="d-flex w-100 justify-content-between">
+																<h6 class="mb-1">Title : Payment of Annual Exam Fee for the academic year 2024-25 , due date is 31.07.2024.	</h6>
+															</div>
+															<div class="d-flex w-100 justify-content-between">
+																<small> Date - <span class="badge badge-danger">06-07-2024</span></small>
+															</div>
+
+														</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+														<!----  Start - studenttimetables update by parthiban (Jun-18-2019) --->
+																								<div class="card mb-3">
+										<div class="header">
+											<h2>Time Table</h2>
+										</div>
+										<div class="body">
+											<div class="table-responsive">
+												<table class="table table-bordered table-striped table-hover">
+													<thead>
+														<tr>
+
+															<th>Class Type</th>
+															<th>Subject</th>
+															<th>Date</th>
+															<th>Time</th>
+															<th>Staff</th>
+															<th>Batch</th>
+															<th>Venue</th>
+															<th>Hall</th>
+														</tr>
+													</thead>
+													<tbody>
+																													<tr>
+																<td colspan="6">
+																	Timetable yet to be updated
+																</td>
+															</tr>
+																											</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+																						<!----  End - studenttimetables update by parthiban (Jun-18-2019) --->
+
+
+
+
+							<div class="row clearfix mb-3">
+																	<div class="col-lg-6 col-md-6 col-sm-12">
+										<div class="card top_counter">
+											<div class="body row p-t-0">
+												<div class="content col-md-12 col-sm-12">
+													<div class="text text-white"><a href="https://digicampus.sriramachandra.edu.in/library-books-issues/borrowed-history-list" class="float-right text-white">More <i class="fa fa-caret-down"></i></a>
+														<h5 class="number text-white">Library Books Borrowed</h5>
+													</div>
+												</div>
+												<div style="height:300px;max-height: 290px;overflow:auto;width: 100%;">
+													<div class="row body p-t-0 ml-1 mr-1">
+																													<div class="list-group col-md-12 col-sm-12 text-center">
+																<h5 class="text-center">No books borrowed</h5>
+															</div>
+																											</div>
+												</div>
+												<!--div class="list-group col-md-12 col-sm-12">
+									<a href="javascript:void(0);" class="list-group-item list-group-item-action flex-column align-items-start">
+										<div class="d-flex w-100 justify-content-between">
+										<h6 class="mb-1">Book name</h5>
+										<small>Due date - <span class="badge badge-danger">02-03-2019</span></small>
+										</div>
+										<p class="mb-1">Department</p>
+										<small class="text-info">Book Author : Mr.J.Srikanth</small>
+									</a>
+								</div>
+								<div class="list-group col-md-12 col-sm-12">
+									<a href="javascript:void(0);" class="list-group-item list-group-item-action flex-column align-items-start">
+										<div class="d-flex w-100 justify-content-between">
+										<h6 class="mb-1">Book name</h5>
+										<small>Due date - <span class="badge badge-danger">02-03-2019</span></small>
+										</div>
+										<p class="mb-1">Department</p>
+										<small class="text-info">Book Author : Mr.J.Srikanth</small>
+									</a>
+								</div-->
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6">
+										<div class="card top_counter">
+																							<div class="body row p-t-0">
+													<div class="content col-md-12 col-sm-12">
+														<div class="text text-white"><a href="https://digicampus.sriramachandra.edu.in/notifications/notification-for-student" class="float-right text-white">More <i class="fa fa-caret-down"></i></a>
+															<h5 class="number text-white">Circular, Announcements & Events</h5>
+														</div>
+													</div>
+													<div style="height:300px;max-height: 290px;overflow:auto;">
+																																											<div class="timeline-item green">
+																<span class="date">25-11-2024</span>
+																<h6 class="text-justify"><a href="/notifications/view/2611" class="text-primary">Circular : The university examination fee is collected annually along with tuition fee at the start of every academic year.</a></h6>
+																<span class="badge badge-danger"><a>SMS Alerts & Circulars</a></span>
+															</div>
+																													<div class="timeline-item green">
+																<span class="date">15-12-2023</span>
+																<h6 class="text-justify"><a href="/notifications/view/2397" class="text-primary">Dear Students, 
+Viksit Bharat @2047 was launched by our Honourable Prime Minister on 11.12.2023. It is to have literacy to all Indians before 2047, our 100th Independence Day. The Prime Minister has addressed all the students and has asked for their ideas to implement this Vision. Prize Money of Rs.5lakhs, Rs.3lakhs and Rs.1lakh is announced for attractive ideas Students are requested to share their ideas through the Mygov portal. https://innovateindia.mygov.in/viksitbharat2047 Students have to Register using their official mail id and then use                      Sri Ramachandra Institute of Higher Education and Research as their Institution Name. Once the ideas are shared in the portal, you will receive a mail from the Government with an id.	Kindly forward that mail to <span class="__cf_email__" data-cfemail="056160646b76717061606b71764576776c77646864666d646b6177642b6061702b6c6b">[email&#160;protected]</span> Request all the students to participate in this Government program.
+
+</a></h6>
+																<span class="badge badge-danger"><a>SMS Alerts & Circulars</a></span>
+															</div>
+																											</div>
+
+													<div class="msg text-center">
+																											</div>
+
+												</div>
+																					</div>
+									</div>
+															</div>
+						</div>
+						<!--<div class="col-lg-12 col-md-12">
+				<div class="card">
+					<div class="header">
+						<h2>Fees</h2>
+					</div>
+					<div class="body">
+						<button type="button" class="btn  btn-simple btn-sm btn-default btn-filter" data-target="all">All</button>
+						<button type="button" class="btn  btn-simple btn-sm btn-danger btn-filter" data-target="pending">Pending</button>
+						<button type="button" class="btn  btn-simple btn-sm btn-success btn-filter" data-target="paid">Paid</button>
+						<div class="table-responsive m-t-20">
+							<table class="table table-filter table-hover m-b-0">                                
+								<tbody>
+																		<tr data-status="pending">
+										<td>2022-2023</td>
+										<td>TUITION FEES</td>
+										<td>200000</td>
+										<td><span class="badge badge-danger">Pending</span></td>
+									</tr>
+																		<tr data-status="pending">
+										<td>2022-2023</td>
+										<td>Application and Eligibility Fee</td>
+										<td>2000</td>
+										<td><span class="badge badge-danger">Pending</span></td>
+									</tr>
+																		<tr data-status="pending">
+										<td>2022-2023</td>
+										<td>University Registration Fees</td>
+										<td>5000</td>
+										<td><span class="badge badge-danger">Pending</span></td>
+									</tr>
+																		<tr data-status="pending">
+										<td>2022-2023</td>
+										<td>College Caution Deposit</td>
+										<td>10000</td>
+										<td><span class="badge badge-danger">Pending</span></td>
+									</tr>
+																		<tr data-status="pending">
+										<td>2022-2023</td>
+										<td>STU.HEALTH INSURANCE SCHEME.</td>
+										<td>3000</td>
+										<td><span class="badge badge-danger">Pending</span></td>
+									</tr>
+																		<tr data-status="pending">
+										<td></td>
+										<td>TUITION FEES</td>
+										<td>200000</td>
+										<td><span class="badge badge-danger">Pending</span></td>
+									</tr>
+																		<tr data-status="pending">
+										<td></td>
+										<td>STU.HEALTH INSURANCE SCHEME.</td>
+										<td>3000</td>
+										<td><span class="badge badge-danger">Pending</span></td>
+									</tr>
+																		<tr data-status="pending">
+										<td></td>
+										<td>CAREER DEVELOPMENT FEE</td>
+										<td>10000</td>
+										<td><span class="badge badge-danger">Pending</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION FEES</td>
+										<td>2000</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION & OTHER FEES (DU)</td>
+										<td>500</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION & OTHER FEES (DU)</td>
+										<td>500</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION FEES</td>
+										<td>2000</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION & OTHER FEES (DU)</td>
+										<td>500</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION & OTHER FEES (DU)</td>
+										<td>500</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION FEES</td>
+										<td>500</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION & OTHER FEES (DU)</td>
+										<td>500</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="pending">
+										<td></td>
+										<td>TUITION FEES</td>
+										<td>210000</td>
+										<td><span class="badge badge-danger">Pending</span></td>
+									</tr>
+																		<tr data-status="pending">
+										<td></td>
+										<td>STU.HEALTH INSURANCE SCHEME.</td>
+										<td>3000</td>
+										<td><span class="badge badge-danger">Pending</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION FEES</td>
+										<td>6500</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION & OTHER FEES (DU)</td>
+										<td>1000</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION & OTHER FEES (DU)</td>
+										<td>1000</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION FEES</td>
+										<td>2000</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																		<tr data-status="paid">
+										<td></td>
+										<td>EXAMINATION & OTHER FEES (DU)</td>
+										<td>500</td>
+										<td><span class="badge badge-success">Paid</span></td>
+									</tr>
+																	</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+            </div> -->
+
+						<!--div class="col-lg-4 col-md-12">
+				<div class="card">
+					<div class="header">
+						<h2>Q &amp; A <a href="#smallModal" data-toggle="modal" data-target="#smallModal" class="btn btn-sm btn-default pull-right">Ask a Question</a></h2>
+						
+						<div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
+							<div class="modal-dialog modal-sm" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="title" id="smallModalLabel">Post your question</h4>
+									</div>
+									<div class="modal-body">
+										<div class="input-group mb-3">
+											<select class="custom-select">
+												<option>Department 1</option>
+												<option>Department 1</option>
+												<option>Department 1</option>
+												<option>Department 1</option>
+												<option>Department 1</option>
+											</select>
+										</div>
+										<div class="input-group">
+											<textarea class="form-control" rows="5"></textarea>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-sm btn-primary">POST</button>
+										<button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">CLOSE</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="body">                            
+						<div class="row">
+							<span class="col-md-1">Q</span>
+							<span class="col-md-11"><a href="" class="text-danger h6">Integrated Rapid Review Revision Course Scheduled?</a></span>
+						</div>
+						<div class="row">
+							<span class="col-md-1">A</span>
+							<span class="col-md-11"><a href="" class="text-success">Review Revision Course from the coutse of examination. It will display in the notice board.</a></span>
+						</div><br>
+						<div class="row">
+							<span class="col-6 col-md-6 text-center">
+								<div class="col"><small>Posted on</small></div>
+								<div class="col"><span class="badge badge-success">26-11-2018</span></div>
+							</span>
+							<span class="col-6 col-md-6 text-center">
+								<div class="col"><small>Replied by</small></div>
+								<div class="col"><span class="badge badge-primary">Dr.Giriraj K</span></div>
+							</span>
+						</div><hr>
+
+						<div class="row">
+							<span class="col-md-1">Q</span>
+							<span class="col-md-11"><a href="" class="text-danger h6">Integrated Rapid Review Revision Course Scheduled?</a></span>
+						</div>
+						<div class="row">
+							<span class="col-md-1">A</span>
+							<span class="col-md-11"><a href="" class="text-success">Review Revision Course from the coutse of examination. It will display in the notice board.</a></span>
+						</div><br>
+						<div class="row">
+							<span class="col-6 col-md-6 text-center">
+								<div class="col"><small>Posted on</small></div>
+								<div class="col"><span class="badge badge-success">26-11-2018</span></div>
+							</span>
+							<span class="col-6 col-md-6 text-center">
+								<div class="col"><small>Replied by</small></div>
+								<div class="col"><span class="badge badge-primary">Dr.Giriraj K</span></div>
+							</span>
+						</div><hr>
+						<div class="msg text-center">
+							<a href="" class="m-r-20 mb-0"><i class="icon-eye"></i> All Answers</a>
+						</div> 
+					</div>
+				</div>
+			</div-->
+
+													<div class="col-lg-6 col-md-6">
+								<div class="card">
+									<div class="header">
+										<h2><a href="https://digicampus.sriramachandra.edu.in/notifications/notification-for-student" class="float-right text-white">More <i class="fa fa-caret-down"></i></a>Exam Notification</h2>
+									</div>
+																			<div class="body">
+											<div style="height:300px;max-height: 120px;overflow:auto;">
+																																			</div>
+										
+										<div class="msg text-center">
+																					</div>
+
+										</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6">
+								<div class="card">
+									<div class="header">
+										<h2>Hostel Details</h2>
+									</div>
+																			<div class="list-group col-md-12 col-sm-12">
+											<h5 class="text-center p-5">Day Scholar</h5>
+										</div>
+																	</div>
+							</div>
+
+												<!--div class="col-lg-8 col-md-12">
+				<div class="card">
+					<div class="header">
+						<h2>Polls</h2>
+					</div>
+					<div class="body">
+												<hr>
+						<div class="msg text-center">
+							<a href="/polls/opinion" class="m-r-20 mb-0">All Polls</a>						</div>   
+
+					</div>
+				</div>
+			</div-->
+
+
+					</div>
+				</div>
+			</div>
+			<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+				$('.due').text('646000');
+			</script>
+		
+
+		<!-- file uploads -->
+		<script>
+			function ValidateRecommendDocs(oInput) {
+				if ($(oInput).attr("name") == 'schedule')
+					var _validFileExtensions = [".xls"];
+				else var _validFileExtensions = [".pdf", ".pptx", ".ppt", ".png", ".jpg", ".jpeg"];
+				if (oInput.type == "file") {
+					var sFileName = oInput.value;
+					if (sFileName.length > 0) {
+						var blnValid = false;
+						for (var j = 0; j < _validFileExtensions.length; j++) {
+							var sCurExtension = _validFileExtensions[j];
+							if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+								blnValid = true;
+								break;
+							}
+						}
+						if (!blnValid) {
+							alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+							oInput.value = "";
+							return false;
+						}
+					}
+					var file_size = oInput.files[0].size;
+					if (file_size > 52428800) {
+						alert("File size is greater than 5MB");
+						oInput.value = "";
+						return false;
+					}
+				}
+				return true;
+			}
+
+			function remove(d) {
+				$('.delete_' + d).remove();
+			}
+
+			function addfiles() {
+				var fd = new FormData();
+				var files = $('#uploadfile')[0].files;
+				// var article = $('#doc_name').val();
+				if (files.length > 0) {
+					fd.append('file', files[0]);
+					// fd.append('article', article);
+					$.ajax({
+						type: 'POST',
+						data: fd,
+						contentType: false,
+						processData: false,
+						url: "https://digicampus.sriramachandra.edu.in/Users/addabcfiles",
+						success: function(data) {
+							$('.uploadedfile').append(data);
+							// $('#article-name').val('');
+							$('#uploadfile').val('');
+						}
+					});
+				}
+			}
+
+			//antiragging
+			function ValidateRecommendanti(oInput) {
+				if ($(oInput).attr("name") == 'schedule')
+					var _validFileExtensions = [".xls"];
+				else var _validFileExtensions = [".pdf", ".pptx", ".ppt", ".png", ".jpg", ".jpeg"];
+				if (oInput.type == "file") {
+					var sFileName = oInput.value;
+					if (sFileName.length > 0) {
+						var blnValid = false;
+						for (var j = 0; j < _validFileExtensions.length; j++) {
+							var sCurExtension = _validFileExtensions[j];
+							if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+								blnValid = true;
+								break;
+							}
+						}
+						if (!blnValid) {
+							alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+							oInput.value = "";
+							return false;
+						}
+					}
+					var file_size = oInput.files[0].size;
+					if (file_size > 52428800) {
+						alert("File size is greater than 5MB");
+						oInput.value = "";
+						return false;
+					}
+				}
+				return true;
+			}
+
+			function remove(d) {
+				$('.delete_' + d).remove();
+			}
+
+			function addantifiles() {
+				var fd = new FormData();
+				var files = $('#uploadfileanti')[0].files;
+				// var article = $('#doc_name').val();
+				if (files.length > 0) {
+					fd.append('file', files[0]);
+					// fd.append('article', article);
+					$.ajax({
+						type: 'POST',
+						data: fd,
+						contentType: false,
+						processData: false,
+						url: "https://digicampus.sriramachandra.edu.in/Users/addantiraggingfiles",
+						success: function(data) {
+							$('.uploadedfileanti').append(data);
+							// $('#article-name').val('');
+							$('#uploadfileanti').val('');
+						}
+					});
+				}
+			}
+		</script>
+
+		<!-- submit -->
+		<script>
+			// function submitABCID() {
+			// 	var abcid = $('#abcid').val();
+			// 	abcid = abcid.replace(/-/g, "");
+
+			// 	//alert(abcid);
+			// 	//alert(abcid.length);
+			// 	if (document.getElementById('abcid').value == "") {
+			// 		document.getElementById('errors').innerHTML = "Please enter a ABC ID.";
+			// 		return false;
+			// 	} else if (abcid.length != 12) {
+			// 		document.getElementById('errors').innerHTML = "Please enter a valid ABC ID.";
+			// 	} else {
+			// 		//alert(abcid);
+			// 		$.ajax({
+			// 			type: "POST",
+			// 			data: {
+			// 				abcid: abcid
+			// 			},
+			// 			url: "https://digicampus.sriramachandra.edu.in//Users/ajaxUpdateABCID/",
+			// 			success: function(result) {
+			// 				//alert(result);
+			// 				location.reload();
+			// 			}
+			// 		});
+			// 	}
+			// }
+			//new code
+			function submitABCID() {
+				var abcid = $('#abcid').val();
+				var student_id = $('#student_id').val();
+				var fileInput = document.getElementById('uploadedfile');
+				//console.log(fileInput);
+				var selectedFiles = [];
+
+				abcid = abcid.replace(/-/g, "");
+
+				// Check if the ABC ID field is empty
+				if (document.getElementById('abcid').value == "") {
+					document.getElementById('errors').innerHTML = "Please enter a ABC ID.";
+					return false;
+				}
+				// Check if ABC ID length is valid
+				else if (abcid.length != 12) {
+					document.getElementById('errors').innerHTML = "Please enter a valid ABC ID.";
+					return false;
+				}
+
+				var values = [];
+				$("#tbluploadedfile tr").each(function() {
+					var row = $(this); // 'this' refers to the current row (tr)
+					var cellValue = row.find("td").eq(1).html(); // Get the content of the second cell (index 1)
+
+					if (cellValue) {
+						values.push(cellValue); // Push the cell content (string) directly into the array
+					}
+				});
+				// console.log(values);
+
+
+				$.ajax({
+					type: "POST",
+					data: {
+						abcid: abcid,
+						student_id: student_id,
+						values: values // Pass the array of selected file names
+					},
+					url: "https://digicampus.sriramachandra.edu.in//Users/ajaxUpdateABCID/",
+					success: function(result) {
+						location.reload();
+					}
+				});
+			}
+			// function onlyNumberKey(evt) {
+			// 	// Only ASCII character in that range allowed
+			// 	var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+			// 	if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+			// 		return false;
+			// 	return true;
+			// }
+			function formatInput() {
+				let input = document.getElementById('abcid');
+				let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+				let formattedValue = '';
+
+				for (let i = 0; i < value.length; i++) {
+					if (i > 0 && i % 3 === 0) {
+						formattedValue += '-';
+					}
+					formattedValue += value.charAt(i);
+				}
+
+				input.value = formattedValue;
+			}
+
+			// Add an event listener to format the input as you type
+			document.getElementById('abcid').addEventListener('input', formatInput);
+
+
+			// function submitantiraggingid() {
+			// 	var antiraggingid = $('#antiraggingid').val();
+			// 	antiraggingid = antiraggingid.replace(/-/g, "");
+			// 	//alert(1111111);
+			// 	//alert(abcid);
+			// 	//alert(abcid.length);
+			// 	if (document.getElementById('antiraggingid').value == "") {
+			// 		document.getElementById('arerrors').innerHTML = "Please enter a Antiragging ID.";
+			// 		return false;
+			// 	} else if (antiraggingid.length != 7) {
+			// 		document.getElementById('arerrors').innerHTML = "Please enter a valid Antiragging ID.";
+			// 	} else {
+			// 		//alert(abcid);
+			// 		$.ajax({
+			// 			type: "POST",
+			// 			data: {
+			// 				'antiraggingid': antiraggingid
+			// 			},
+			// 			url: "https://digicampus.sriramachandra.edu.in/users/ajaxupdateantiraggingid/",
+			// 			success: function(resultid) {
+			// 				//alert(result);
+			// 				location.reload();
+			// 			}
+			// 		});
+			// 	}
+			// }
+
+			function submitantiraggingid() {
+				var antiraggingid = $('#antiraggingid').val();
+				var student_id = $('#student_id').val();
+				var fileInput = document.getElementById('uploadedfileanti');
+				//console.log(fileInput);
+				// alert(antiraggingid);
+				var selectedFiles = [];
+
+				antiraggingid = antiraggingid.replace(/-/g, "");
+
+				// Check if the Antiragging ID field is empty
+				if (document.getElementById('antiraggingid').value == "") {
+					document.getElementById('errors').innerHTML = "Please enter a Antiragging ID.";
+					return false;
+				}
+				// Check if Antiragging ID length is valid
+				else if (antiraggingid.length != 7) {
+					document.getElementById('errors').innerHTML = "Please enter a valid Antiragging ID.";
+					return false;
+				}
+
+				var values = [];
+				$("#tbluploadedfileanti tr").each(function() {
+					var row = $(this); // 'this' refers to the current row (tr)
+					var cellValue = row.find("td").eq(1).html(); // Get the content of the second cell (index 1)
+
+					if (cellValue) {
+						values.push(cellValue); // Push the cell content (string) directly into the array
+					}
+				});
+				// console.log(values);
+
+
+				$.ajax({
+					type: "POST",
+					data: {
+						antiraggingid: antiraggingid,
+						student_id: student_id,
+						values: values // Pass the array of selected file names
+					},
+					url: "https://digicampus.sriramachandra.edu.in//Users/ajaxupdateantiraggingid/",
+					success: function(result) {
+						location.reload();
+					}
+				});
+			}
+		</script>
+					<script>
+				$(document).ready(function() {
+					$.ajax({
+						type: "POST",
+						// data: {},
+						url: "https://digicampus.sriramachandra.edu.in/Users/ajaxFeedbackCheck/",
+						success: function(result) {
+							if (result == 0) {
+								document.getElementById('nonClosableModal').style.display = 'block';
+							} else if (result == 1 || result == 2) {
+								document.getElementById('nonClosableModal').style.display = 'none';
+							}
+						}
+					});
+				});
+
+				// Prevent closing modal with Escape key
+				document.addEventListener('keydown', function(event) {
+					if (event.key === 'Escape') {
+						event.preventDefault();
+					}
+				});
+				// Prevent clicks outside the modal from closing it
+				document.getElementById('nonClosableModal').addEventListener('click', function(event) {
+					event.stopPropagation();
+				});
+				// Function to "complete" the action and hide modal
+				function completeAction() {
+					document.getElementById('nonClosableModal').style.display = 'none';
+				}
+				// Function to be called from iframe after form submission
+				function onFormSubmitted() {
+					document.getElementById('nonClosableModal').style.display = 'none';
+				}
+			</script>
+				
+		<!-- The Modal -->
+		<div class="modal" id="nonClosableModal" style="display:none;">
+			<div class="modal-content">
+				<iframe style="width:100%;height:100%;border:none;" src="https://digicampus.sriramachandra.edu.in/Studentcurriculumfeedbacks/modeladd" id="embeddedPage"></iframe>
+			</div>
+		</div>
+
+		<!-- The FACULTY  Modal -->
+		<!-- <div class="modal" id="nonClosableModalFac" style="display:none;">
+			<div class="modal-content">
+				<iframe style="width:100%;height:100%;border:none;" src="https://digicampus.sriramachandra.edu.in/FacultyCurriculumFeedbacks/modeladd" id="embeddedPage"></iframe>
+			</div>
+		</div> -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140953034-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-140953034-1');
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			navH();
+		});
+
+		$(window).resize(function() {
+			navH();
+		});
+
+		function navH() {
+			var WH = $(window).outerHeight(true);
+			var HeadH = $('.navbar.navbar-fixed-top').outerHeight(true);
+			var UserH = $('.user-account').outerHeight(true);
+			var MH = $('.user-account').next('.nav').outerHeight(true);
+			var NHgt = WH - (HeadH + UserH + MH + 40);
+			$(".sidebar-nav .main-menu").height(NHgt);
+
+		}
+
+		function showTime() {
+			var date = new Date();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			var session = "AM";
+
+			if (h == 0) {
+				h = 12;
+			}
+			if (h >= 12) {
+				session = "PM";
+			}
+
+			if (h > 12) {
+				h = h - 12;
+			}
+			m = (m < 10) ? m = "0" + m : m;
+			s = (s < 10) ? s = "0" + s : s;
+
+			var time = h + ":" + m + ":" + s + "<br>" + session;
+			$('#clock').html(time);
+			setTimeout(showTime, 1000);
+		}
+		showTime();
+	</script>
+</body>
+
+<!-- </html> -->

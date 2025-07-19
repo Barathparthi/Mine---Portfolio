@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Barath Kumar | Portfolio Website | Developer</title>
+
+	<!-- mobile specific metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+   ================================================== -->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/vendor.css">
+
+	<!-- script
+   ================================================== -->
+	<script src="js/modernizr.js"></script>
+	<script src="js/pace.min.js"></script>
+	<script>
+		// 	// Disable right-click context menu
+		// document.addEventListener("contextmenu", function (event) {
+		//     event.preventDefault();
+		// });
+
+		// // Disable key shortcuts like F12, Ctrl+Shift+I/J/C, Ctrl+U, etc.
+		// document.addEventListener("keydown", function (event) {
+		//     // F12
+		//     if (event.keyCode === 123) {
+		//         event.preventDefault();
+		//     }
+
+		//     // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C
+		//     if (event.ctrlKey && event.shiftKey && ['I', 'J', 'C'].includes(event.key.toUpperCase())) {
+		//         event.preventDefault();
+		//     }
+
+		//     // Ctrl+U (View Source)
+		//     if (event.ctrlKey && event.key.toLowerCase() === 'u') {
+		//         event.preventDefault();
+		//     }
+
+		//     // Ctrl+S, Ctrl+H, Ctrl+A, etc.
+		//     if (event.ctrlKey && 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(event.key.toUpperCase())) {
+		//         event.preventDefault();
+		//     }
+		// });
+
+		// // Attempt to detect DevTools open via timing trick (limited reliability)
+		// setInterval(function () {
+		//     const start = performance.now();
+		//     const end = performance.now();
+		//     if (end - start > 100) {
+		//         alert("Developer tools detected! Please close them.");
+		//         window.close(); // Or redirect
+		//     }
+		// }, 1000);
+
+	</script>
+
+	<script>
+	// Disable right-click
+	document.addEventListener("contextmenu", (e) => e.preventDefault());
+	
+	// Disable key combinations (F12, Ctrl+Shift+I/J/C/U, etc.)
+	document.addEventListener("keydown", function (e) {
+		if (
+			e.keyCode === 123 || // F12
+			(e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
+			(e.ctrlKey && ['U', 'S', 'A'].includes(e.key.toUpperCase())) ||
+			(event.ctrlKey && 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(event.key.toUpperCase()))
+		) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+	});
+	
+	// Detect DevTools by measuring execution delay caused by `debugger`
+	let devToolsOpen = false;
+	
+	function detectDevTools() {
+		const start = performance.now();
+		debugger;
+		const end = performance.now();
+	
+		if (end - start > 100) {
+			devToolsOpen = true;
+			alert("Developer tools are open. The site will now close.");
+			window.open('', '_self', ''); // Needed for some browsers
+			window.close(); // Attempt to close
+		} else {
+			devToolsOpen = false;
+		}
+	}
+	
+	// Check every second
+	setInterval(detectDevTools, 1000);
+	
+	// Optional: hide everything if DevTools is open
+	function hideContent() {
+		if (devToolsOpen) {
+			document.body.innerHTML = '';
+		}
+	}
+	setInterval(hideContent, 1000);
+	</script>
+	
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-153937526-1');
+    </script>
+
+	<!-- favicons ================================================== -->
+	<link rel="icon" type="image/png" href="images/logo1.png">
+
+
+	<style>
+		.header-hidden {
+			transform: translateY(-100%);
+			transition: transform 0.3s ease-in-out;
+		}
+	</style>
+
+</head>
+
+<body id="top">
+
+	<!-- header 
+   ================================================== -->
+	<header>
+		<div class="">
+
+			<div class="bar">
+				<a class="menu-toggle" href="#"><span>Menu</span></a>
+
+				<div class="logo">
+					<!-- <img style="height: 20px; width: 20px;" src="images/bxt.ico" alt="logo"> -->
+					<a href="index.html">Code With BxT</a>
+				</div>
+
+				<nav id="main-nav-wrap">
+					<ul class="main-navigation">
+						<li class="current"><a class="smoothscroll" href="#intro" title="">Home</a></li>
+						<li><a class="smoothscroll" href="#about" title="">About</a></li>
+						<li><a class="smoothscroll" href="#resume" title="">Resume</a></li>
+						<li><a class="smoothscroll" href="#portfolio" title="">Portfolio</a></li>
+						<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
+					</ul>
+				</nav>
+			</div> <!-- /top-bar -->
+
+		</div> <!-- /row -->
+	</header> <!-- /header -->
+
+	<!-- intro section
+   ================================================== -->
+	<section id="intro">
+
+		<div class="intro-overlay"></div>
+
+		<div class="intro-content">
+			<div class="row">
+
+				<div class="col-twelve">
+
+					<h5 style="color: red;">Welcome All! To my Portfolio.</h5>
+					<h1>I<span style="color: red">'</span>m Barath Kumar<span style="color: red">.</span></h1>
+
+					<p class="intro-position">
+						<span>Developer</span>
+						<span>Starter</span>
+						<span>Student</span>
+					</p>
+
+					<!--<marquee class="blink">-->
+					<marquee onmouseover="this.stop()" onmouseout="this.start()" class="blink">
+						<b style="background-color:red">I have listed my Projects in my Portfolio
+							Section:</b>&emsp;&emsp;&emsp;&emsp;
+						Smart Irrigation system using IoT.&emsp;&emsp;&emsp;&emsp;
+						FarmVigil using Raspberry Pi.&emsp;&emsp;&emsp;&emsp;
+						E-commerce Using Flutter.&emsp;&emsp;&emsp;&emsp;
+						FullStack Web Portal for College Management System using React.&emsp;&emsp;
+						<a href="#portfolio" style=color:red>Click Me</a>
+					</marquee>
+					</marquee>
+
+					<!--<marquee width="40%" direction="up" height="30%">
+						This is sample scrolling text.
+						</marquee>-->
+					<a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
+					<a href="#about" class="button stroke">...Sri Rama Jayam...</a>
+					<a href="./Mother/index.html" class="button stroke">Mother's Day</a><br />
+					<a href="#about" class="button stroke">BarTrix</a>
+				</div>
+
+			</div>
+		</div> <!-- /intro-content -->
+
+		<ul class="intro-social">
+			<li><a href="https://www.linkedin.com/in/barath-kumar-p-btech-aida-a02701273/"><i
+						class="fa fa-linkedin"></i></a></li>
+			<li><a href="https://www.instagram.com/barath_1_/"><i class="fa fa-instagram"></i></a></li>
+			<li><a href="https://github.com/Barathparthi"><i class="fa fa-github"></i></a></li>
+			<li><a href="https://www.youtube.com/channel/UCTMQSPhQ8YPL9H-1_zLxugw"><i class="fa fa-youtube"></i></a>
+			</li>
+			<li><a href="https://leetcode.com/u/Barathkumar05/"><i class="fa fa-code"></i></a></li>
+			<!--<li><a href=""><i class="fa fa-play"></i></a></li>
+	    	<li><a href=""><i class="fa fa-apple"></i></a></li>-->
+		</ul> <!-- /intro-social -->
+
+	</section> <!-- /intro -->
+
+
+	<!-- about section
+   ================================================== -->
+	<section id="about">
+
+		<div class="row section-intro">
+			<div class="col-twelve">
+				<h2 style="color: white; background-color: black; padding: 10px;">Project Section</h2>
+				<!-- YouTube section ================================================== -->
+				<!-- <div style="padding-bottom: 10rem; height: 400px;"> -->
+				<div style="width: auto; height: auto; margin: 0 auto; position: relative;">
+					<!--<iframe width="100%" height="100%" <img src="images/Iot1proj.jpeg" ></iframe>-->
+					<img id="dynamicImage" src="images/Iot1proj.jpeg" alt="Iot1proj">
+					<p>
+					<h4 id="dynamicText">Solar Powered Smart Irrigation System</h4>
+					</p>
+				</div>
+
+				<div class="intro-info">
+
+					<h5>About</h5>
+					<h2>Let me introduce myself.</h2>
+
+					<img src="images/E0322039.png" alt="Barath Kumar Picture">
+
+					<p class="lead">"Lad with a <font color="#FF0077">million</font> dreams."</p>
+				</div>
+
+			</div>
+		</div> <!-- /section-intro -->
+
+		<div class="row about-content">
+
+			<div class="col-six tab-full">
+
+				<h3>Profile</h3>
+				<p>A Computer Science and Engineering (CSE-AIDA) B.Tech. student from Sri Ramachandra Faculty of
+					Engineering and Technology with excellent academic background and diverse skillset.
+					Experienced in Web, Flutter and Android Development.
+					I am well versed with Flutter, Rest Apis, Python, Kotlin, Java, C++ and basics of JavaScript & CSS.
+				</p>
+
+				<ul class="info-list">
+					<li>
+						<strong>Fullname:</strong>
+						<span>Barath kumar P</span>
+					</li>
+					<li>
+						<strong>Birth Date:</strong>
+						<span>February 25th, 2005</span>
+					</li>
+					<li>
+						<strong>Website:</strong>
+						<!-- <span><a href="https://github.com/Barathparthi">https://github.com/Barathparthi</a></span> -->
+						<span><a href="https://scriptopia.netlify.app">https://scriptopia.netlify.app</a></span>
+					</li>
+					<li>
+						<strong>Email:</strong>
+						<span>barathparthi2005kumar@gmail.com</span>
+					</li>
+
+				</ul> <!-- /info-list -->
+
+			</div>
+
+			<div class="col-six tab-full">
+
+				<h3>Skills</h3>
+				<p>
+					<strong>Languages:</strong><br />
+					<b>English :</b><br /> Read, Write, Speak : <i>Native</i><br />
+					<b>Tamil :</b><br /> Read, Write, Speak : <i>Native</i><br />
+					<!-- <b>Marathi :</b><br /> Read, Write, Speak : <i>Native</i><br />
+                    <b>French :</b><br /> Read, Write : <i>Proficient</i><br />
+                    <b>Gujarati :</b><br /> Read, Speak : <i>Mother Tongue</i><br />-->
+
+				</p>
+
+
+				<ul class="skill-bars">
+					<li>
+						<div class="progress percent85"><span>85%</span></div>
+						<strong>C | C++ | Python | R | Java</strong>
+					</li>
+					<li>
+						<div class="progress percent80"><span>80%</span></div>
+						<strong>React JS | Node JS</strong>
+					</li>
+					<li>
+						<div class="progress percent75"><span>75%</span></div>
+						<strong>Android Studio | Kotlin</strong>
+					</li>
+					<li>
+						<div class="progress percent70"><span>70%</span></div>
+						<strong>Firebase | MYSQL</strong>
+					</li>
+					<li>
+						<div class="progress percent50"><span>50%</span></div>
+						<strong>Flutter | Dart, </strong>
+					</li>
+
+				</ul> <!-- /skill-bars -->
+
+			</div>
+
+		</div>
+
+		<div class="row button-section">
+			<div class="col-twelve">
+				<a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
+
+				<a href="Resume 2.pdf" title="Download CV" class="button button-primary">Download CV</a>
+				<!---
+   			<a href="Ali Solanki – Solidity _ Smart Contract Developer.pdf" title="Download CV (Solidity)" class="button button-primary">Download CV (Solidity)</a>-->
+			</div>
+		</div>
+
+	</section> <!-- /process-->
+
+
+	<!-- resume Section
+   ================================================== -->
+	<section id="resume" class="grey-section">
+
+		<div class="row section-intro">
+			<div class="col-twelve">
+
+				<h5>Resume</h5>
+				<h2>More of my Credentials</h2>
+			</div>
+		</div> <!-- /section-intro-->
+
+		<div class="row resume-timeline">
+
+			<div class="col-twelve resume-header">
+
+				<h2>Education</h2>
+
+			</div> <!-- /resume-header -->
+
+			<div class="col-twelve">
+
+				<div class="timeline-wrap">
+
+					<div class="timeline-block">
+
+						<div class="timeline-ico">
+							<i class="fa fa-briefcase"></i>
+						</div>
+
+						<div class="timeline-header">
+							<h3>Bachelor's Degree</h3>
+							<p>July 2022 - Present(2023)<br>Graduation At <b>2026</b></p>
+						</div>
+
+						<div class="timeline-content">
+							<h4><a href="https://maps.app.goo.gl/pSRmQYFVQYrHgsAg9">Sri Ramachandra Faculty of
+									Engineering and Technology</a></h4>
+							<p>Currently pursuing B.Tech. Degree specialization in Computer Science with Artificial
+								Intelligence and Data Analytics(CSE) at
+								Sri Ramachandra Faculty of Engineering and Technology, Porur - Chennai-122.</p>
+						</div>
+
+					</div> <!-- /timeline-block -->
+
+
+					<div class="timeline-block">
+
+						<div class="timeline-ico">
+							<i class="fa fa-briefcase"></i>
+						</div>
+
+						<div class="timeline-header">
+							<h3>Schooling</h3>
+							<p>2008 - 2022</p>
+						</div>
+
+						<div class="timeline-content">
+							<h4><a href="https://maps.app.goo.gl/ZgvSw9f9A7W1a5yv6">Masi Matriculation Higher Secondary
+									School</a></h4>
+							<p>Completed my schooling through Tamil Nadu Board at Masi Matriculation Higher Secondary
+								School, Iyyappanthangal - Chennai.</p>
+						</div>
+
+					</div> <!-- /timeline-block -->
+
+				</div> <!-- /timeline-wrap -->
+
+			</div> <!-- /col-twelve -->
+
+		</div> <!-- /resume-timeline -->
+
+	</section> <!-- /features -->
+
+
+	<!-- Portfolio Section
+   ================================================== -->
+	<section id="portfolio">
+
+		<div class="row section-intro">
+			<div class="col-twelve">
+
+				<h5>Portfolio</h5>
+				<h2>Check Out Some of My Projects.</h2>
+
+				<p class="lead">These Projects have helped me to develop my Skills and understand the Industry better.
+				</p>
+
+			</div>
+		</div> <!-- /section-intro-->
+
+		<div class="row portfolio-content">
+
+			<div class="col-twelve">
+
+				<!-- portfolio-wrapper -->
+				<div id="folio-wrapper" class="block-1-2 block-mob-full stack">
+
+					<div class="bgrid folio-item">
+						<div class="item-wrap">
+							<img src="images/portfolio/Iot1proj.jpeg" alt="Smart Irrigation System">
+							<a href="#modal-01" class="overlay">
+								<div class="folio-item-table">
+									<div class="folio-item-cell">
+										<h3 class="folio-title">Smart Irrigation System usnig Solar</h3>
+										<span class="folio-types">
+											Smart Irrigation System using Solar
+										</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div> <!-- /folio-item -->
+
+					<div class="bgrid folio-item">
+						<div class="item-wrap">
+							<img src="images/portfolio/FarmVigil.jpg" alt="FarmVigil">
+							<a href="#modal-02" class="overlay">
+								<div class="folio-item-table">
+									<div class="folio-item-cell">
+										<h3 class="folio-title">FarmVigil Using Raspberry Pi</h3>
+										<span class="folio-types">
+											FarmVigil Using Raspberry Pi
+										</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div> <!-- /folio-item -->
+
+					<div class="bgrid folio-item">
+						<div class="item-wrap">
+							<img src="images/portfolio/E-commerce.jpg" alt="E-commerce">
+							<a href="#modal-03" class="overlay">
+								<div class="folio-item-table">
+									<div class="folio-item-cell">
+										<h3 class="folio-title">E-commerce App Using Flutter and Firebase</h3>
+										<span class="folio-types">
+											E-commerce App Using Flutter and Firebase
+										</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div> <!-- /folio-item -->
+
+					<div class="bgrid folio-item">
+						<div class="item-wrap">
+							<img src="images/portfolio/Piano.png" alt="Piano">
+							<a href="#modal-04" class="overlay">
+								<div class="folio-item-table">
+									<div class="folio-item-cell">
+										<h3 class="folio-title">Piano Using Python</h3>
+										<span class="folio-types">
+											Piano Using Python
+										</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div> <!-- /folio-item -->
+
+					<div class="bgrid folio-item">
+						<div class="item-wrap">
+							<img src="images/portfolio/Mother.png" alt="Mother">
+							<a href="#modal-05" class="overlay">
+								<div class="folio-item-table">
+									<div class="folio-item-cell">
+										<h3 class="folio-title">Mother's Day Wishes</h3>
+										<span class="folio-types">
+											Mother's Day Wishes
+										</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div> <!-- /folio-item -->
+
+					<div class="bgrid folio-item">
+						<div class="item-wrap">
+							<img src="images/portfolio/Sriher.png" alt="Portal">
+							<a href="#modal-06" class="overlay">
+								<div class="folio-item-table">
+									<div class="folio-item-cell">
+										<h3 class="folio-title">Academic Automation Process Using React js</h3>
+										<span class="folio-types">
+											Academic Automation Process Using React js
+										</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div> <!-- /folio-item -->
+
+					<div class="bgrid folio-item">
+						<div class="item-wrap">
+							<img src="images/portfolio/BarTrix.png" alt="BarTrix">
+							<a href="#modal-07" class="overlay">
+								<div class="folio-item-table">
+									<div class="folio-item-cell">
+										<h3 class="folio-title">BarTrix</h3>
+										<span class="folio-types">
+											Virtual Assistant
+										</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div> <!-- /folio-item -->
+
+					<div class="bgrid folio-item">
+						<div class="item-wrap">
+							<img src="images/portfolio/ITMS.jpg" alt="BarTrix">
+							<a href="#modal-08" class="overlay">
+								<div class="folio-item-table">
+									<div class="folio-item-cell">
+										<h3 class="folio-title">Intelligent Tracking Management System (ITMS)</h3>
+										<span class="folio-types">
+											Intelligent Tracking Management System (ITMS)
+										</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div> <!-- /folio-item -->
+
+					<div class="bgrid folio-item">
+						<div class="item-wrap">
+							<img src="images/portfolio/Finger.png" alt="finger">
+							<a href="#modal-09" class="overlay">
+								<div class="folio-item-table">
+									<div class="folio-item-cell">
+										<h3 class="folio-title">Fingerprint based Blood Group detection using Transfer
+											Learning</h3>
+										<span class="folio-types">
+											Fingerprint based Blood Group detection using Transfer Learning
+										</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div> <!-- /folio-item>
+
+					<!-- modal popups - begin
+	            ============================================================= -->
+					<div id="modal-01" class="popup-modal slider mfp-hide">
+
+						<div class="media">
+							<img src="images/portfolio/modals/Iot1proj.jpeg" alt="Plant Watering System" />
+						</div>
+
+						<div class="description-box">
+							<h4>Solar Power Smart Irrigation System</h4>
+							<p>This Project is made for Farmers.</p>
+							<div class="categories">Iot Project</div>
+						</div>
+						<div class="link-box">
+							<!-- <a href="#">App</a> -->
+							<a href="#" class="popup-modal-dismiss">Close</a>
+						</div>
+					</div> <!-- /modal-01 -->
+					<div id="modal-02" class="popup-modal slider mfp-hide">
+
+						<div class="media">
+							<img src="images/portfolio/modals/FarmVigil.jpg" alt="FarmVigil" />
+						</div>
+
+						<div class="description-box">
+							<h4>FarmVigil Using Raspberry Pi</h4>
+							<p>This Project is Made for Agriculture Purpose. To Measure the crop Wellness.</p>
+							<div class="categories">IOT Project</div>
+						</div>
+						<div class="link-box">
+							<!-- <a href="#">App</a> -->
+							<a href="#" class="popup-modal-dismiss">Close</a>
+						</div>
+					</div> <!-- /modal-02 -->
+
+					<div id="modal-03" class="popup-modal slider mfp-hide">
+						<div class="media">
+							<img src="images/portfolio/modals/E-commerce.jpg" alt="E-commerce" />
+						</div>
+
+						<div class="description-box">
+							<h4>E-commerce Application Using Flutter and Firebase</h4>
+							<p>This project is made in my 1st Year intership Period</p>
+							<div class="categories">Mobile Application</div>
+						</div>
+
+						<div class="link-box">
+							<!-- <a href="#">Visit</a> -->
+							<a href="#" class="popup-modal-dismiss">Close</a>
+						</div>
+					</div> <!-- /modal-03 -->
+
+					<div id="modal-04" class="popup-modal slider mfp-hide">
+
+						<div class="media">
+							<img src="images/portfolio/modals/Piano.png" alt="Piano" />
+						</div>
+
+						<div class="description-box">
+							<h4>Piano Using Python</h4>
+							<p>I created a Piano using Python and set different sound for piano Keys. </p>
+							<div class="categories">Python IDLE Application</div>
+						</div>
+
+						<div class="link-box">
+							<!-- <a href="#">Github</a> -->
+							<a href="#" class="popup-modal-dismiss">Close</a>
+						</div>
+
+					</div>
+					<!-- /modal-04 -->
+
+					<div id="modal-05" class="popup-modal slider mfp-hide">
+
+						<div class="media">
+							<img src="images/portfolio/modals/Mother.png" alt="mother" />
+						</div>
+
+						<div class="description-box">
+							<h4>Mother's Day Wishes</h4>
+							<p>Mother's Day Wishes</p>
+
+							<div class="categories">Android App Development</div>
+						</div>
+
+						<div class="link-box">
+							<!-- <a href="#">Github</a> -->
+							<a href="#" class="popup-modal-dismiss">Close</a>
+						</div>
+
+					</div> <!-- /modal-05 -->
+
+					<div id="modal-06" class="popup-modal slider mfp-hide">
+
+						<div class="media">
+							<img src="images/portfolio/modals/Sriher.png" alt="Portal" />
+						</div>
+
+						<div class="description-box">
+							<h4>Web Portal For Our College</h4>
+							<p><strong>Project Name:</strong> Academic Automation Process Using React js</p>
+
+							<div class="categories">Website Design</div>
+						</div>
+
+						<div class="link-box">
+							<!-- <a href="https://github.com/alisolanki/GuestIn">GitHub</a> -->
+							<a href="#" class="popup-modal-dismiss">Close</a>
+						</div>
+
+					</div> <!-- /modal-06 -->
+
+					<div id="modal-07" class="popup-modal slider mfp-hide">
+
+						<div class="media">
+							<img src="images/portfolio/modals/BarTrix.png" alt="BarTrix" />
+						</div>
+
+						<div class="description-box">
+							<h4>BarTrix</h4>
+							<p>Virtual Assistant Using Html Css and Js</p>
+
+							<div class="categories">Virtual Assistant</div>
+						</div>
+
+						<div class="link-box">
+							<!-- <a href="#">Github</a> -->
+							<a href="#" class="popup-modal-dismiss">Close</a>
+						</div>
+
+					</div> <!-- /modal-07 -->
+
+					<div id="modal-08" class="popup-modal slider mfp-hide">
+
+						<div class="media">
+							<img src="images/portfolio/modals/ITMS.jpg" alt="ITMS" />
+						</div>
+
+						<div class="description-box">
+							<h4>Intelligent Tracking Management System (ITMS)</h4>
+							<p>Intelligent Tracking Management System (ITMS)</p>
+
+							<div class="categories">Website Development</div>
+						</div>
+
+						<div class="link-box">
+							<!-- <a href="http://alisolanki.gq">Details</a> -->
+							<a href="#" class="popup-modal-dismiss">Close</a>
+						</div>
+
+					</div> <!-- /modal-08 -->
+
+					<div id="modal-09" class="popup-modal slider mfp-hide">
+
+						<div class="media">
+							<img src="images/portfolio/modals/Finger.png" alt="ITMS" />
+						</div>
+
+						<div class="description-box">
+							<h4>Fingerprint based Blood Group detection using Transfer Learning</h4>
+							<p>Fingerprint based Blood Group detection using Transfer Learning</p>
+
+							<div class="categories">Website Development</div>
+						</div>
+
+						<div class="link-box">
+							<!-- <a href="http://alisolanki.gq">Details</a> -->
+							<a href="#" class="popup-modal-dismiss">Close</a>
+						</div>
+
+					</div> <!-- /modal-09 -->
+
+
+					<!-- modal popups - end
+	            ============================================================= -->
+
+				</div> <!-- /portfolio-wrapper -->
+
+			</div> <!-- /twelve -->
+
+		</div> <!-- /portfolio-content -->
+
+	</section> <!-- /portfolio -->
+
+
+
+	<!-- stats Section
+   ================================================== -->
+	<section id="stats" class="count-up">
+
+		<div class="row">
+			<div class="col-twelve">
+
+				<div class="block-1-3 block-s-1-3 block-tab-1-2 block-mob-full stats-list">
+
+
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="icon-light-bulb"></i>
+						</div>
+
+						<h3 class="stat-count">
+							15
+						</h3>
+
+						<h5 class="stat-title">
+							Crazy Ideas
+						</h5>
+
+					</div> <!-- /stat -->
+
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="icon-mail"></i>
+						</div>
+
+						<h3 class="stat-count">
+							9
+						</h3>
+
+						<h5 class="stat-title">
+							Completed Projects
+						</h5>
+
+					</div> <!-- /stat -->
+
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="icon-clock"></i>
+						</div>
+
+						<h3 class="stat-count">
+							---
+						</h3>
+
+						<h5 class="stat-title">
+							Hours
+						</h5>
+
+					</div> <!-- /stat -->
+
+				</div> <!-- /stats-list -->
+
+			</div> <!-- /twelve -->
+		</div> <!-- /row -->
+
+	</section> <!-- /stats 
+	
+   <!-- contact
+   ================================================== -->
+	<section id="contact">
+
+		<div class="row section-intro">
+			<div class="col-twelve">
+
+				<h5>Contact</h5>
+				<h2>I'd Love To Hear From You.</h2>
+
+				<p class="lead">Feel free to Contact Me:</p>
+
+			</div>
+		</div> <!-- /section-intro -->
+
+		<div class="row contact-form">
+
+			<div class="col-twelve">
+				<!-- <div class="form-field">
+				<button class="submitform" name="form">
+					<a href="https://forms.visme.co/formsPlayer/eprokkvr-mine">Open Contact Form</a>
+				</button>
+			</div> -->
+
+
+				<form name="form" id="contactForm" method="POST" action="https://formspree.io/f/xrgnzzdq">
+					<fieldset>
+						<div class="form-field">
+							<input name="name" type="text" id="contactName" placeholder="Name" value="" minlength="2"
+								required="">
+						</div>
+						<div class="form-field">
+							<input name="_replyto" type="email" id="contactEmail" placeholder="Email" value=""
+								required="">
+						</div>
+						<div class="form-field">
+							<input name="_subject" type="text" id="contactSubject" placeholder="Subject" value="">
+						</div>
+						<div class="form-field">
+							<textarea name="message" id="contactMessage" placeholder="message" rows="10" cols="50"
+								required=""></textarea>
+						</div>
+						<div class="form-field">
+							<button class="submitform" name="submit">Submit</button>
+							<div id="submit-loader">
+								<div class="text-loader">Sending...</div>
+								<div class="s-loader">
+									<div class="bounce1"></div>
+									<div class="bounce2"></div>
+									<div class="bounce3"></div>
+								</div>
+							</div>
+						</div>
+
+					</fieldset>
+				</form>
+
+				<!-- contact-warning -->
+				<div id="message-warning">
+				</div>
+				<!-- contact-success -->
+				<div id="message-success">
+					<i class="fa fa-check"></i>Your message was sent, thank you!<br>
+				</div>
+
+			</div> <!-- /col-twelve -->
+
+		</div> <!-- /contact-form -->
+
+		<div class="row contact-info">
+
+			<div class="col-four tab-full">
+
+				<div class="icon">
+					<i class="icon-pin"></i>
+				</div>
+
+				<h5>Where to find me</h5>
+
+				<p>
+					Iyyappanthangal - Chennai<br>
+					600122 India
+				</p>
+
+			</div>
+
+			<div class="col-four tab-full collapse">
+
+				<div class="icon">
+					<i class="icon-mail"></i>
+				</div>
+
+				<h5>Email Me At</h5>
+
+				<p>barathparthi2005kumar@gmail.com<br>
+					e0322039@sret.edu.in
+				</p>
+
+			</div>
+
+			<div class="col-four tab-full">
+
+				<div class="icon">
+					<i class="icon-phone"></i>
+				</div>
+
+				<h5>Call Me At</h5>
+
+				<p>Phone: Telegram (<a style="color: white;" href="https://t.me/Barathkumar_25">BarathKumar P</a>)
+				</p>
+			</div>
+
+		</div> <!-- /contact-info -->
+
+	</section> <!-- /contact -->
+
+
+	<!-- footer ================================================== -->
+
+	<footer>
+		<div class="row">
+
+			<div class="col-six tab-full pull-right social">
+
+				<ul class="footer-social">
+					<li><a href="https://www.linkedin.com/in/barath-kumar-p-btech-aida-a02701273/"><i class="fa fa-linkedin"></i></a></li>
+					<li><a href="https://www.instagram.com/barath_1_/"><i class="fa fa-instagram"></i></a></li>
+					<li><a href="https://github.com/Barathparthi"><i class="fa fa-github"></i></a></li>
+					<li><a href="https://www.youtube.com/channel/UCTMQSPhQ8YPL9H-1_zLxugw"><i class="fa fa-youtube"></i></a></li>
+					<li><a href="https://leetcode.com/u/Barathkumar05/"><i class="fa fa-code"></i></a></li>
+					<!--<li><a href=""><i class="fa fa-play"></i></a></li>
+	    	    	<li><a href=""><i class="fa fa-apple"></i></a></li>-->
+				</ul>
+
+			</div>
+
+			<div class="col-six tab-full">
+				<div class="copyright">
+					<!-- <span>© Copyright 2021 </span> -->
+					<span>Design by <a href="https://www.linkedin.com/in/barath-kumar-p-btech-aida-a02701273/">Barath Kumar P </a></span>
+				</div>
+			</div>
+
+			<div id="go-top">
+				<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+			</div>
+
+		</div> <!-- /row -->
+	</footer>
+
+	<div id="preloader">
+		<div id="loader"></div>
+	</div>
+
+	<!-- Java Script
+   ================================================== -->
+	<script src="js/jquery-2.1.3.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var header = document.querySelector("header");
+			var lastScrollTop = 0;
+
+			window.addEventListener("scroll", function () {
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+				if (scrollTop > lastScrollTop) {
+					// Scroll down
+					header.classList.add("header-hidden");
+				} else {
+					// Scroll up
+					header.classList.remove("header-hidden");
+				}
+				lastScrollTop = scrollTop;
+			});
+		});
+	</script>
+
+</body>
+
+</html>
